@@ -11,8 +11,8 @@ fix.forEach(fix => {
     glob.sync(path.resolve(__dirname, `../images/**/*.${fix}`)).forEach(file => {
         const filename = file.split('images')
         els.push(`
-         <li>
-             <img src="https://pic.zenglbg.com/images/${filename[filename.length - 1]}" />
+         <li style="width: 100%">
+             <img style="width: 100%" src="https://pic.zenglbg.com/images/${filename[filename.length - 1]}" />
          </li>
         `)
     })
@@ -30,7 +30,7 @@ function replace(file) {
             <title>images</title>
         </head>
         <body>
-            <ol>
+            <ol style="width: 100%">
                 ${els.join('')}
             </ol>
         </body>
