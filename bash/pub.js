@@ -5,14 +5,14 @@ const fs = require('fs')
 const $ = require('gogocode');
 
 els = []
-const fix = ["PNG", "JPG", "png", 'jpg']
+const fix = ["PNG", "JPG", "png", 'jpg', 'jpeg']
 fix.forEach(fix => {
 
     glob.sync(path.resolve(__dirname, `../images/**/*.${fix}`)).forEach(file => {
         const filename = file.split('images')
         els.push(`
          <li style="width: 100%">
-             <img style="width: 100%" src="https://pic.zenglbg.com/images/${filename[filename.length - 1]}" />
+             <img style="width: 100%" src="https://pic.zenglbg.com/images${filename[filename.length - 1]}" />
          </li>
         `)
     })
