@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "glob": "^7.1.7",
+    "gogocode": "^1.0.22",
+    "shelljs": "^0.8.4"
+  },
+  "scripts": {
+    "pub": "node bash/pub.js"
+  }
+}
