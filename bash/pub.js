@@ -12,7 +12,8 @@ fix.forEach(fix => {
         const filename = file.split('images')
         els.push(`
          <li style="width: 100%">
-             <img style="width: 100%" src="https://pic.zenglbg.com/images${filename[filename.length - 1]}" />
+            <p>https://pic.zenglbg.com/images${filename[filename.length - 1]}</p>
+            <img style="width: 100%" src="https://pic.zenglbg.com/images${filename[filename.length - 1]}" alt="https://pic.zenglbg.com/images${filename[filename.length - 1]}"/>
          </li>
         `)
     })
