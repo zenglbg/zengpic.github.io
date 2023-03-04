@@ -8,7 +8,7 @@
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
     "dev": "npm run docs:dev",
-    "build": "npm run docs:build",
+    "bd": "node bash/images.js && npm run docs:build",
     "info": "vuepress info"
   },
   "keywords": [],

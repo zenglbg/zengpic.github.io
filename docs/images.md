@@ -32,7 +32,7 @@
  ## 81-2021-09-04_16176
  [81-2021-09-04_16176](images81-2021-09-04_16176) 
 
- ![ali-pay.jpg](/images/ali-pay.jpg) 
+ ![alipay.jpg](/images/alipay.jpg) 
 
  ## blog
  [blog](imagesblog) 
