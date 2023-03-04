@@ -13,18 +13,24 @@ function read(p) {
         if (fs.lstatSync(path.join(p, d)).isFile()) {
             if (arrs[length - 1] === 'images') {
                 if (Array.isArray(data['index'])) {
-                    data['index'].push(`https://pic.zenglbg.com/images/${d}`)
+                    data["index"].push(`https://pic.zlbg.cc/images/${d}`);
                 } else {
-                    data['index'] = [`https://pic.zenglbg.com/images/${d}`]
+                    data["index"] = [`https://pic.zlbg.cc/images/${d}`];
                 }
             } else {
                 console.log(p);
                 if (Array.isArray(data[arrs[length - 1]])) {
-                    data[arrs[length - 1]].push(`https://pic.zenglbg.com/${arrs.slice(arrs.indexOf('images'), length).join('/')
-                        }/${d}`)
+                    data[arrs[length - 1]].push(
+                      `https://pic.zlbg.cc/${arrs
+                        .slice(arrs.indexOf("images"), length)
+                        .join("/")}/${d}`
+                    );
                 } else {
-                    data[arrs[length - 1]] = [`https://pic.zenglbg.com/${arrs.slice(arrs.indexOf('images'), length).join('/')
-                        }/${d}`]
+                    data[arrs[length - 1]] = [
+                      `https://pic.zlbg.cc/${arrs
+                        .slice(arrs.indexOf("images"), length)
+                        .join("/")}/${d}`,
+                    ];
                 }
             }
         } else {
