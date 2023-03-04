@@ -50,44 +50,55 @@ let generatePath = path.resolve(__dirname, "../docs"); //生成文件路径
 //   console.log(pathname);
 // });
 
-function transformChild({ children, dirname, dirLink }) {
-  //   console.log("🚀 ~ file: images.js:54 ~ transformChild ~ parent:", parent);
-  //   const _parent = parent ? parent : "/images";
+function transformChild({ children, dirname, dirLink ,parent}) {
   const str = Object.entries(children).reduce((acc, [k, v]) => {
-    const { type, parent } = v;
-    console.log("🚀 ~ file: images.js:69 ~ str ~ parent:", parent);
-
+    const {
+      type,
+      targetPath,
+      fileName,
+      fileLink,
+      dirLink,
+      filePath,
+      dirname,
+      targetFile,
+    } = v;
     const isFile = type == "file";
-    const p = `${parent}/${k}`;
+
     return (
       acc +
       (isFile
-        ? `\n ![${k}](${p}) \n`
+        ? `\n ![${k}](${fileLink}) \n`
         : `
         \n ## ${k}
-        \n [${k}](${p}) \n`)
+        \n [${k}](${dirLink}) \n`)
     );
-  }, `# 返回上一页\n   \n`);
+  }, `# 返回上一页\n [${parent}](${parent}) \n`);
   return str;
 }
-function getFileTree(dir, parent = "") {
+function getFileTree(dir, target, parent = "") {
+  console.log("🚀 ~ file: images.js:79 ~ getFileTree ~ target:", parent);
   const files = fs.readdirSync(dir);
   const fileTree = {};
   files.forEach((file) => {
     const filePath = path.join(dir, file);
+    const targetPath = path.join(target, file);
     const parentPath = `${parent}/${file}`;
     const stats = fs.statSync(filePath);
     if (stats.isFile()) {
       fileTree[file] = {
         type: "file",
         path: filePath,
+        fileLink: filePath.replace(basepath, ""),
       };
     } else if (stats.isDirectory()) {
       fileTree[file] = {
         type: "dir",
         path: filePath,
-        parent,
-        children: getFileTree(filePath, parentPath),
+        parent: parentPath,
+        dirLink: filePath.replace(basepath, ""),
+        targetPath,
+        targetFile: path.join(targetPath, "index.md"),
+        children: getFileTree(filePath, targetPath, parentPath),
       };
     }
   });
@@ -95,25 +106,29 @@ function getFileTree(dir, parent = "") {
 }
 
 function writeFile(fileTree) {
-  console.log("🚀 ~ file: images.js:104 ~ writeFile ~ fileTree:", fileTree);
   Object.entries(fileTree).forEach(([k, v]) => {
-    const { parent, type, children } = v;
-    const targetFile = `${generatePath}/${
-      parent ? parent.split("/").join("_") : "images"
-    }.md`;
-    if (type == "dir") {
-      //   console.log("🚀 ~ file: images.js:119 ~ Object.entries ~ k, v:", k, v);
-      fs.writeFileSync(targetFile, `\n${transformChild(v)}`);
-    }
-    // if (type == "dir") {
-    //   //   fs.mkdirSync(targetPath, { recursive: true });
-    //   fs.writeFileSync(targetFile, `\n${transformChild(v)}`);
-    //   writeFile(children);
+    // console.log("🚀 ~ file: images.js:53 ~ Object.entries ~ k,v:", k);
+    const { targetFile, targetPath, children, type, path } = v;
+    // console.log("🚀 ~ file: images.js:110 ~ Object.entries ~ type:", type);
+
+    // console.log("🚀 ~ file: images.js:54 ~ Object.entries ~ target:", targetFile);
+
+    // if (k === "images") {
+    //   fs.mkdirSync(path, { recursive: true });
+    //   fs.writeFileSync(targetFile, `# 等级目录\n${transformChild(v)}`);
     // }
+    if (type == "dir") {
+      fs.mkdirSync(targetPath, { recursive: true });
+      fs.writeFileSync(targetFile, `\n${transformChild(v)}`);
+      writeFile(children);
+    }
   });
 }
-console.log(getFileTree(basepath));
-writeFile(getFileTree(basepath));
+fs.writeFileSync(
+  "../sss1.json",
+  JSON.stringify(getFileTree(basepath, generatePath))
+);
+writeFile(getFileTree(basepath, generatePath));
 
 // fs.writeFileSync(path.join(generatePath, "dd.md"), JSON.stringify(fileTree));
 // console.log(JSON.stringify(fileTree));
