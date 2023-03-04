@@ -1,19 +1,22 @@
 {
   "dependencies": {
+    "@vuepress/plugin-docsearch": "^2.0.0-beta.61",
     "glob": "^7.1.7",
     "gogocode": "^1.0.22",
-    "shelljs": "^0.8.4"
-  },
-  "scripts": {
-    "pub": "node bash/pub.js",
-    "docs:dev": "vuepress dev docs",
-    "dev": "npm run docs:dev",
-    "docs:build": "vuepress build docs"
+    "shelljs": "^0.8.4",
+    "vue-router": "3.4.5"
   },
   "devDependencies": {
     "@vuepress/client": "^2.0.0-beta.61",
     "add": "^2.0.6",
     "vue": "^3.2.47",
     "vuepress": "^2.0.0-beta.61"
+  },
+  "scripts": {
+    "pub": "node bash/pub.js",
+    "docs:dev": "vuepress dev docs",
+    "dev": "npm run docs:dev",
+    "build": "vuepress build docs",
+    "info": "vuepress info"
   }
 }

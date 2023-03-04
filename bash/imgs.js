@@ -4,7 +4,7 @@ const path = require("path");
 let basepath = path.resolve(__dirname, "../docs/.vuepress/public"); //解析目录路径
 let filterFile = ["node_modules", "\\..*"]; //过滤文件名，使用，隔开
 let stopFloor = 10; //遍历层数
-let generatePath = path.resolve(__dirname, "../docs/assets/README.md"); //生成文件路径
+let generatePath = path.resolve(__dirname, "../docs/assets.md"); //生成文件路径
 let isFullPath = true; //是否输出完整路径
 
 //获取入参
