@@ -1,31 +1,6 @@
-import { Vuepress } from '@vuepress/client/lib/components/Vuepress'
-
-const routeItems = [
-  ["v-8daa1a0e","/","Hello VuePress",["/index.html","/README.md"]],
-  ["v-3706649a","/404.html","",["/404"]],
+export const pagesRoutes = [
+  ["v-8daa1a0e","/",{"title":"Hello VuePress"},["/index.html","/README.md"]],
+  ["v-3706649a","/404.html",{"title":""},["/404"]],
+  ["v-fc169d3a","/assets/assets.html",{"title":"Hello VuePress"},["/assets/assets","/assets/assets.md"]],
+  ["v-40036ff3","/assets/",{"title":"Hello VuePress"},["/assets/index.html","/assets/README.md"]],
 ]
-
-export const pagesRoutes = routeItems.reduce(
-  (result, [name, path, title, redirects]) => {
-    result.push(
-      {
-        name,
-        path,
-        component: Vuepress,
-        meta: { title },
-      },
-      ...redirects.map((item) => ({
-        path: item,
-        redirect: path,
-      }))
-    )
-    return result
-  },
-  [
-    {
-      name: "404",
-      path: "/:catchAll(.*)",
-      component: Vuepress,
-    }
-  ]
-)
