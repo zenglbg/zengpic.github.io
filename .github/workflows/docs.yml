@@ -1,5 +1,6 @@
 name: docs
-
+# 教程
+# https://www.ruanyifeng.com/blog/2019/09/getting-started-with-github-actions.html
 on:
   # 每当 push 到 main 分支时触发部署
   push:
