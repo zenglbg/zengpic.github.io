@@ -17,12 +17,14 @@ function transformFileName(filePath) {
 function transformToLowerExt(filePath) {
   // 获取文件的原始后缀名
   const originalExtName = path.extname(filePath);
-  console.log(originalExtName);
   //    // 修改文件的后缀名
   let newExtName = path.join(
     path.dirname(filePath),
-    originalExtName.replace(/[^\w]/g, "_")
+    "ext" +
+      path.basename(filePath, originalExtName) +
+      originalExtName.toLowerCase()
   );
+  console.log(filePath, newExtName);
   fs.renameSync(filePath, newExtName);
 }
 
@@ -35,8 +37,8 @@ function getFileTree(dir, parent = "") {
 
     const stats = fs.statSync(filePath);
     if (stats.isFile()) {
-      //   transformToLowerExt(filePath);
-      transformFileName(filePath);
+      transformToLowerExt(filePath);
+      //   transformFileName(filePath);
       fileTree[file] = {
         type: "file",
         parent,
