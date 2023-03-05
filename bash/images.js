@@ -24,17 +24,7 @@ function transformChild({ children }) {
   }, `# 返回上一页\n   \n`);
   return str;
 }
-
-function transformToLowerFile(filePath) {
-  // 获取文件的原始后缀名
-  const originalExtName = path.extname(filePath);
-  //    // 修改文件的后缀名
-  let newExtName = path.join(
-    path.dirname(filePath),
-    path.basename(filePath, originalExtName) + originalExtName.toLowerCase()
-  );
-  fs.renameSync(filePath, newExtName);
-}
+ 
 function getFileTree(dir, parent = "") {
   const files = fs.readdirSync(dir);
   const fileTree = {};
@@ -44,8 +34,6 @@ function getFileTree(dir, parent = "") {
 
     const stats = fs.statSync(filePath);
     if (stats.isFile()) {
-      transformToLowerFile(filePath);
-
       fileTree[file] = {
         type: "file",
         parent,
