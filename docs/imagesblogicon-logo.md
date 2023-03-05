@@ -2,6 +2,6 @@
 # 返回上一页
    
 
- ![lbg.png](/images/blog/icon-logo/lbg.png) 
+ ![extlbg.png](/images/blog/icon-logo/extlbg.png) 
 
- ![zenglbg.png](/images/blog/icon-logo/zenglbg.png) 
+ ![extzenglbg.png](/images/blog/icon-logo/extzenglbg.png) 
