@@ -3,53 +3,7 @@ const path = require("path");
 
 let basepath = path.resolve(__dirname, "../docs/.vuepress/public"); //解析目录路径
 let generatePath = path.resolve(__dirname, "../docs"); //生成文件路径
-
-// function readImg(p, floor = 1) {
-//   console.log("🚀 ~ file: images.js:8 ~ readImg ~ p:", p);
-//   //   fs.mkdirSync(fileDir, { recursive: true });
-//   //   fs.writeFileSync(filePath, `${tree}`);
-//   fs.readdirSync(p).forEach((dirname) => {
-//     const joinPath = path.join(p, dirname);
-//     const isFile = fs.lstatSync(joinPath).isFile();
-//     const fileDir = path.join(generatePath, dirname);
-//     const filePath = path.join(fileDir, "index.md");
-
-//     let tree = floor === 1 ? `# 顶级目录` : `# ${p} \n`;
-//     if (isFile) {
-//     } else {
-//       tree += `\n[${dirname}](/${dirname})`;
-//       fs.mkdirSync(fileDir, { recursive: true });
-//       fs.writeFileSync(filePath, `${tree}`);
-//       //   readImg(joinPath);
-//     }
-//   });
-// }
-
-// readImg(basepath);
-
-// fs.readdir(__dirname, (err, files) => {
-//   if (err) {
-//     throw err;
-//   }
-//   files.forEach((file) => {
-//     console.log(file);
-//   });
-// });
-// // ``` ## 使用node遍历当前目录及子目录 ```
-// function travel(dir, callback) {
-//   fs.readdirSync(dir).forEach(function (file) {
-//     var pathname = path.join(dir, file);
-//     if (fs.statSync(pathname).isDirectory()) {
-//       travel(pathname, callback);
-//     } else {
-//       callback(pathname);
-//     }
-//   });
-// }
-// travel(".", function (pathname) {
-//   console.log(pathname);
-// });
-
+ 
 function transformChild({ children }) {
   //   console.log("🚀 ~ file: images.js:54 ~ transformChild ~ parent:", parent);
   //   const _parent = parent ? parent : "/images";
